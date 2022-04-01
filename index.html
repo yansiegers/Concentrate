@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="style.css">
+    <script defer src="./game.js"></script>
+    <link rel="stylesheet" href="./style.css">
     <title>Concentrate!</title>
   </head>
   <body>
@@ -14,9 +15,14 @@
       <p>De leerlingen krijgen minimaal <input id="free-time" type="number" min="5" max="60" value="15"> minuten vrij.</p>
       <input id="amount" type="range" min="1" max="150" value="90">
     </div>
-    <div id="bowl">
-      <div id="stream"></div>
-      <div id="water"></div>
+
+    <div>
+      <div id="faucet">
+        <div id="stream"></div>
+      </div>
+      <div id="bowl">
+        <div id="water"></div>
+      </div>
     </div>
   </body>
 </html>
