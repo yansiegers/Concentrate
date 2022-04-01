@@ -1,15 +1,9 @@
-const sliderElement = document.getElementById('slider');
-sliderElement.value = 100;
-sliderElement.oninput = () => {
-  game.slider = sliderElement.value;
-  document.getElementById('amount').innerHTML = sliderElement.value;
-};
-
 const game = {
   waterLevel: 0,
   slider: 100,
 
   onload() {
+    this.initialize();
     setInterval(
       () => {
         this.streamDisplay();
@@ -18,6 +12,21 @@ const game = {
         }
       }, 100
     );
+  },
+
+  initialize() {
+    this.initSlider();
+  },
+
+  initSlider() {
+    const sliderElement = document.getElementById('slider');
+    const amountElement = document.getElementById('amount');
+
+    sliderElement.value = this.slider;
+    sliderElement.oninput = () => {
+      this.slider = sliderElement.value;
+      amountElement.innerHTML = sliderElement.value;
+    };
   },
 
   streamDisplay() {
