@@ -16,7 +16,7 @@ const game = {
         if (this.waterLevel < 500) {
           this.fillUp();
         }
-      }, 1000
+      }, 100
     );
   },
 
@@ -30,6 +30,10 @@ const game = {
     const addition = this.slider/100;
     this.waterLevel += addition;
     waterElement.style.height = `${this.waterLevel}px`;
+    waterElement.innerHTML = `${this.waterLevel}px`;
+
+    const streamElement = document.getElementById('stream');
+    streamElement.innerHTML = `+${addition}`;
   }
 }
 
