@@ -1,5 +1,5 @@
 const sliderElement = document.getElementById('slider');
-sliderElement.value = 90;
+sliderElement.value = 100;
 sliderElement.oninput = () => {
   game.slider = sliderElement.value;
   document.getElementById('amount').innerHTML = sliderElement.value;
@@ -7,7 +7,7 @@ sliderElement.oninput = () => {
 
 const game = {
   waterLevel: 0,
-  slider: 90,
+  slider: 100,
 
   onload() {
     setInterval(
@@ -16,7 +16,7 @@ const game = {
         if (this.waterLevel < 500) {
           this.fillUp();
         }
-      }, 10
+      }, 1000
     );
   },
 
@@ -27,7 +27,8 @@ const game = {
 
   fillUp() {
     const waterElement = document.getElementById('water');
-    this.waterLevel++;
+    const addition = this.slider/100;
+    this.waterLevel += addition;
     waterElement.style.height = `${this.waterLevel}px`;
   }
 }
