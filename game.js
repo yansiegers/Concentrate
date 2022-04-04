@@ -1,4 +1,5 @@
 const game = {
+  started: false,
   waterLevel: 0,
   slider: 100,
 
@@ -6,9 +7,11 @@ const game = {
     this.initialize();
     setInterval(
       () => {
-        this.streamDisplay();
-        if (this.waterLevel < 500) {
-          this.fillUp();
+        if (this.started) {
+          this.streamDisplay();
+          if (this.waterLevel < 500) {
+            this.fillUp();
+          }
         }
       }, 100
     );
@@ -16,6 +19,24 @@ const game = {
 
   initialize() {
     this.initSlider();
+    this.initGameToggle();
+  },
+
+  initGameToggle() {
+    const toggleElement = document.getElementById('game-toggle');
+    const streamElement = document.getElementById('stream');
+
+    toggleElement.onclick = () => {
+      this.started = !this.started;
+      console.log(this.started);
+      if (this.started) {
+        toggleElement.value = 'Stop';
+        streamElement.style.width = this.inPixels(this.slider);
+      } else {
+        toggleElement.value = 'Start';
+        streamElement.style.width = this.inPixels(0);
+      }
+    };
   },
 
   initSlider() {
@@ -31,18 +52,23 @@ const game = {
 
   streamDisplay() {
     const streamElement = document.getElementById('stream');
-    streamElement.style.width = `${this.slider}px`;
+    streamElement.style.width = this.inPixels(this.slider);
   },
 
   fillUp() {
     const waterElement = document.getElementById('water');
     const addition = this.slider/100;
     this.waterLevel += addition;
-    waterElement.style.height = `${this.waterLevel}px`;
-    waterElement.innerHTML = `${this.waterLevel}px`;
+    waterElement.style.height = this.inPixels(this.waterLevel);
+    waterElement.innerHTML = this.inPixels(this.waterLevel);
 
     const streamElement = document.getElementById('stream');
-    streamElement.innerHTML = `+${addition}`;
+    streamElement.innerHTML = `+${addition}px`;
+  },
+
+  // Helper functions
+  inPixels(amount) {
+    return `${amount}px`;
   }
 }
 

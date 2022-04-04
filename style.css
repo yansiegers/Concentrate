@@ -14,7 +14,6 @@ input[type=range] {
   display: flex;
 }
 #stream, #water {
-  padding-top: 15px;
   color: white;
   text-align: center;
 }
@@ -27,7 +26,8 @@ input[type=range] {
   justify-content: center;
 }
 #stream {
-  width: 10px;
+  width: 0px;
+  transition: width 1s ease-in-out;
   background-color: blue;
 }
 #bowl {
@@ -37,6 +37,5 @@ input[type=range] {
   flex-direction: column-reverse;
 }
 #water {
-  width: 750px;
   background-color: blue;
 }
