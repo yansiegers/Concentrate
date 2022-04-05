@@ -4,6 +4,7 @@ const game = {
   slider: 100,
   classTime: 0,
   freeTime: 0,
+  timeLeft: 0,
 
   onload() {
     this.initialize();
@@ -12,6 +13,7 @@ const game = {
         if (this.started) {
           this.streamDisplay();
           if (this.waterLevel < 500) {
+            this.timerDisplay();
             this.fillUp();
           }
         }
@@ -31,6 +33,7 @@ const game = {
 
     this.classTime = classTimeElement.value;
     this.freeTime = freeTimeElement.value;
+    this.timeLeft = this.classTime;
   },
 
   initGameToggle() {
@@ -76,10 +79,17 @@ const game = {
     streamElement.style.width = this.inPixels(this.slider);
   },
 
+  timerDisplay() {
+    const timerElement = document.getElementById('timer');
+    this.timeLeft--;
+    console.log(this.timeLeft);
+    timerElement.innerHTML = this.timeLeft;
+  },
+
   fillUp() {
     const waterElement = document.getElementById('water');
     const multiplier = this.slider / 100;
-    const addition = (this.classTime - this.freeTime) / 500;
+    const addition = 500 / (this.classTime - this.freeTime);
     const addWater = addition * multiplier;
 
     this.waterLevel += addWater;
@@ -87,7 +97,7 @@ const game = {
     waterElement.innerHTML = this.inPixels(this.waterLevel);
 
     const streamElement = document.getElementById('stream');
-    streamElement.innerHTML = `+${addWater}px`;
+    streamElement.innerHTML = `+${this.inPixels(addWater)}`;
   },
 
   // Helper functions
