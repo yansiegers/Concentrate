@@ -2,6 +2,8 @@ const game = {
   started: false,
   waterLevel: 0,
   slider: 100,
+  classTime: 0,
+  freeTime: 0,
 
   onload() {
     this.initialize();
@@ -18,8 +20,17 @@ const game = {
   },
 
   initialize() {
+    this.initFormData();
     this.initSlider();
     this.initGameToggle();
+  },
+
+  initFormData() {
+    const classTimeElement = document.getElementById('class-time');
+    const freeTimeElement = document.getElementById('free-time');
+
+    this.classTime = classTimeElement.value;
+    this.freeTime = freeTimeElement.value;
   },
 
   initGameToggle() {
@@ -32,11 +43,21 @@ const game = {
       if (this.started) {
         toggleElement.value = 'Stop';
         streamElement.style.width = this.inPixels(this.slider);
+        this.disableFormElements(true);
       } else {
         toggleElement.value = 'Start';
         streamElement.style.width = this.inPixels(0);
+        this.disableFormElements(false);
       }
     };
+  },
+
+  disableFormElements(boolean) {
+    const classTimeElement = document.getElementById('class-time');
+    const freeTimeElement = document.getElementById('free-time');
+
+    classTimeElement.disabled = boolean;
+    freeTimeElement.disabled = boolean;
   },
 
   initSlider() {
