@@ -47,7 +47,7 @@ const game = {
       } else {
         toggleElement.value = 'Start';
         streamElement.style.width = this.inPixels(0);
-        this.disableFormElements(false);
+        // this.disableFormElements(false);
       }
     };
   },
@@ -78,13 +78,16 @@ const game = {
 
   fillUp() {
     const waterElement = document.getElementById('water');
-    const addition = this.slider/100;
-    this.waterLevel += addition;
+    const multiplier = this.slider / 100;
+    const addition = (this.classTime - this.freeTime) / 500;
+    const addWater = addition * multiplier;
+
+    this.waterLevel += addWater;
     waterElement.style.height = this.inPixels(this.waterLevel);
     waterElement.innerHTML = this.inPixels(this.waterLevel);
 
     const streamElement = document.getElementById('stream');
-    streamElement.innerHTML = `+${addition}px`;
+    streamElement.innerHTML = `+${addWater}px`;
   },
 
   // Helper functions
