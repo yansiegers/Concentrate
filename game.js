@@ -8,13 +8,17 @@ const game = {
 
   onload() {
     this.initialize();
-    setInterval(
+    const intervalId = setInterval(
       () => {
         if (this.started) {
           this.streamDisplay();
           if (this.waterLevel < 500) {
             this.timerDisplay();
             this.fillUp();
+          } else {
+            clearInterval(intervalId);
+            startConfetti();
+            setTimeout(stopConfetti, 5000);
           }
         }
       }, 100
