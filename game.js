@@ -83,7 +83,7 @@ const game = {
     const timerElement = document.getElementById('timer');
     this.timeLeft--;
     console.log(this.timeLeft);
-    timerElement.innerHTML = this.timeLeft;
+    timerElement.innerHTML = this.inTimeFormat(this.timeLeft);
   },
 
   fillUp() {
@@ -103,6 +103,13 @@ const game = {
   // Helper functions
   inPixels(amount) {
     return `${amount}px`;
+  },
+
+  inTimeFormat(totalSeconds) {
+    const minutes = `${Math.floor(totalSeconds / 60)}`.padStart(2, '0');
+    const seconds = `${totalSeconds % 60}`.padStart(2, '0');
+
+    return `${minutes}:${seconds}`;
   }
 }
 
