@@ -2,12 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  /* input[type=radio] {
+    @apply block;
+  } */
+  input[type=submit] {
+    @apply px-3 py-2;
   }
 }
-
-*/
