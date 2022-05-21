@@ -17,8 +17,7 @@ module System
         flash[:success] = 'User successfully created'
         redirect_to system_users_path
       else
-        flash[:error] = 'Something went wrong'
-        render 'new'
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -32,8 +31,7 @@ module System
         flash[:success] = 'User was successfully updated'
         redirect_to system_users_path
       else
-        flash[:error] = 'Something went wrong'
-        render 'edit'
+        render :edit, status: :unprocessable_entity
       end
     end
 

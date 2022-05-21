@@ -1,18 +1,19 @@
+<%= render partial: 'partials/system/form_errors', locals: { object: @user } %>
+
 <%= form_with model: [:system, @user] do |form| %>
   <%= form.label :email_address %><br>
-  <%= form.text_field :email_address %><br>
+  <%= form.email_field :email_address %><br>
 
   <%= form.label :password %><br>
-  <%= form.text_field :password %><br>
+  <%= form.password_field :password %><br>
 
   <%= form.label :house_id %><br>
   <%= form.select :house_id, house_select_options, { prompt: 'Select' } %><br>
 
-  <%= form.radio_button :role, 'admin' %>
-  <%= form.label :role_admin, 'Admin' %><br>
-
-  <%= form.radio_button :role, 'coach' %>
-  <%= form.label :role_coach, 'Coach' %><br>
+  <%= form.collection_radio_buttons :role, User.roles, :first, :first do |collection| %>
+    <%= collection.radio_button %>
+    <%= collection.label class: 'capitalize' %><br>
+  <% end %>
 
   <%= form.submit %>
 <% end %>
