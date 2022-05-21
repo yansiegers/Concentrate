@@ -1,0 +1,37 @@
+<h2 class="text-lg">System - Users</h2>
+<%= link_to "New user", new_system_user_path %>
+
+<% if @users.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email address</th>
+        <th>Password</th>
+        <th>House ID</th>
+        <th>Role</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email_address %></td>
+          <td><%= user.password %></td>
+          <td><%= "#{user.house.name} (#{user.house_id})" %></td>
+          <td><%= user.role %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.updated_at %></td>
+          <td>
+            <%= link_to 'Edit', edit_system_user_path(user) %>
+          </td>
+          <td>
+            <%= button_to 'Delete', [:system, user], method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

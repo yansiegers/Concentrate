@@ -1,0 +1,18 @@
+<%= form_with model: [:system, @user] do |form| %>
+  <%= form.label :email_address %><br>
+  <%= form.text_field :email_address %><br>
+
+  <%= form.label :password %><br>
+  <%= form.text_field :password %><br>
+
+  <%= form.label :house_id %><br>
+  <%= form.select :house_id, house_select_options, { prompt: 'Select' } %><br>
+
+  <%= form.radio_button :role, 'admin' %>
+  <%= form.label :role_admin, 'Admin' %><br>
+
+  <%= form.radio_button :role, 'coach' %>
+  <%= form.label :role_coach, 'Coach' %><br>
+
+  <%= form.submit %>
+<% end %>

@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 @layer components {
+  thead:first-child {
+    @apply border-b border-gray-200 bg-white
+  }
+  th, td {
+    @apply p-2
+  }
+
   /* input[type=radio] {
-    @apply block;
+  @apply block;
   } */
   input[type=submit] {
     @apply px-3 py-2;
