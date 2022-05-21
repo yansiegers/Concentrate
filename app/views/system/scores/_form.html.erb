@@ -1,0 +1,9 @@
+<%= form_with model: [:system, @score] do |form| %>
+  <%= form.label :house_id %><br>
+  <%= form.select :house_id, house_select_options, { prompt: 'Select' } %><br>
+
+  <%= form.label :value %><br>
+  <%= form.number_field :value, in: 1..12 %><br>
+
+  <%= form.submit %>
+<% end %>
