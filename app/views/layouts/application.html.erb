@@ -17,6 +17,20 @@
       <p><%= link_to 'Menu', menu_path %></p>
     </aside>
 
+    <div class="container mx-auto my-8 px-5">
+      <% flash.each do |name, message| %>
+        <% if name == 'success' %>
+          <div class="flash-message flash-message__success">
+            <%= message %>
+          </div>
+        <% else %>
+          <div class="flash-message flash-message__error">
+            <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
     <main class="container mx-auto px-5">
       <%= yield %>
     </main>

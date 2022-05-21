@@ -14,11 +14,10 @@ module System
     def create
       @score = Score.new(score_params)
       if @score.save
-        flash[:success] = 'Score successfully created'
+        flash[:success] = 'Score successfully created.'
         redirect_to system_scores_path
       else
-        flash[:error] = 'Something went wrong'
-        render 'new'
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -29,11 +28,10 @@ module System
     def update
       @score = Score.find(params[:id])
       if @score.update(score_params)
-        flash[:success] = 'Score was successfully updated'
+        flash[:success] = 'Score was successfully updated.'
         redirect_to system_scores_path
       else
-        flash[:error] = 'Something went wrong'
-        render 'edit'
+        render :edit, status: :unprocessable_entity
       end
     end
 
