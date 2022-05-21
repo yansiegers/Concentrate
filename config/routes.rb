@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'pages#home'
+  get '/menu', to: 'pages#menu'
 
   namespace :system do
     resources :users
