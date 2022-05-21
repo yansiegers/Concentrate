@@ -20,7 +20,13 @@
           <td><%= user.id %></td>
           <td><%= user.email_address %></td>
           <td><%= user.password %></td>
-          <td><%= "#{user.house.name} (#{user.house_id})" %></td>
+          <td>
+            <% if user.house %>
+              <%= "#{user.house.name} (#{user.house_id})" %>
+            <% else %>
+              -
+            <% end %>
+          </td>
           <td><%= user.role %></td>
           <td><%= user.created_at %></td>
           <td><%= user.updated_at %></td>

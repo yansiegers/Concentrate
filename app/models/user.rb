@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  belongs_to :house
+  belongs_to :house, optional: true
 
   enum role: {
     admin: 0,

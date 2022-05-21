@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_175553) do
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password", null: false
-    t.integer "house_id", null: false
+    t.integer "house_id"
     t.integer "role", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

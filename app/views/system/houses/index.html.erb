@@ -1,1 +1,31 @@
-<h1>System - Houses</h1>
+<h2 class="text-lg">System - Houses</h2>
+<%= link_to "New house", new_system_house_path %>
+
+<% if @houses.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @houses.each do |house| %>
+        <tr>
+          <td><%= house.id %></td>
+          <td><%= house.name %></td>
+          <td><%= house.created_at %></td>
+          <td><%= house.updated_at %></td>
+          <td>
+            <%= link_to 'Edit', edit_system_house_path(house) %>
+          </td>
+          <td>
+            <%= button_to 'Delete', [:system, house], method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

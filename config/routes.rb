@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   namespace :system do
     resources :users
+    resources :houses
   end
 end
