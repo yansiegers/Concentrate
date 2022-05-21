@@ -17,8 +17,7 @@ module System
         flash[:success] = 'House successfully created'
         redirect_to system_houses_path
       else
-        flash[:error] = 'Something went wrong'
-        render 'new'
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -32,8 +31,7 @@ module System
         flash[:success] = 'House was successfully updated'
         redirect_to system_houses_path
       else
-        flash[:error] = 'Something went wrong'
-        render 'edit'
+        render :edit, status: :unprocessable_entity
       end
     end
 
